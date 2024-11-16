@@ -1,5 +1,12 @@
+import os
 from flask import Flask, request, jsonify, make_response
-from helper import *
+from helper import classification
+from dotenv import load_dotenv
+
+load_dotenv()
+
+PORT = os.getenv("PORT")
+HOST = os.getenv("HOST")
 
 app = Flask(__name__)
 
@@ -14,11 +21,16 @@ def index_get():
 
     return response.json
 
-@app.route('/classify', methods=['POST'])
-def classify():
+@app.route('/api/classify', methods=['POST'])
+def classify():    
     try: 
-        json_response = request.get_json()
-        classification_result, percentage = classification(json_response["payload"])
+        json_response = request.json
+        payload = json_response.get("payload")
+        
+        if not payload:
+            raise Exception("Please provide the payload!")
+        
+        classification_result, percentage = classification(payload)
        
         response_data = {
             'status': 'Success!',
@@ -41,13 +53,13 @@ def classify():
         return response
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=8080)
+    app.run(debug=True, host=HOST, port=PORT)
 
 
 # Notes before deployment
 # 1. Enable The https://console.cloud.google.com/apis/library/iam.googleapis.com
-# 5. Make Sure You Have The Necessary Permission To Perform The Deployment
-# 2. Make Sure The RAM Is Set to 2.0 GB
-# 3. Make Sure You Do Not Specify the Exact Version Of The Tensorflow in your requirements.txt
-# 4. Set the region to Jakarta and not any other region (optional)
-# 5. Git Naming Conventions That You Can Try (https://dev.to/ishanmakadia/git-commit-message-convention-that-you-can-follow-1709)
+# 2. Make Sure You Have The Necessary Permission To Perform The Deployment
+# 3. Make Sure The RAM Is Set to 2.0 GB
+# 4. Make Sure You Do Not Specify the Exact Version Of The Tensorflow in your requirements.txt
+# 5. Set the region to Jakarta and not any other region (optional)
+# 6. Git Naming Conventions That You Can Try (https://dev.to/ishanmakadia/git-commit-message-convention-that-you-can-follow-1709)
