@@ -7,6 +7,7 @@ load_dotenv()
 
 PORT = os.getenv("PORT")
 HOST = os.getenv("HOST")
+DEBUG = True if os.getenv("DEBUG") == "True" else False
 
 app = Flask(__name__)
 
@@ -53,7 +54,7 @@ def classify():
         return response
 
 if __name__ == "__main__":
-    app.run(debug=True, host=HOST, port=PORT)
+    app.run(debug=DEBUG, host=HOST, port=PORT)
 
 
 # Notes before deployment
