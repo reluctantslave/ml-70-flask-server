@@ -5,9 +5,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-PORT = os.getenv("PORT")
-HOST = os.getenv("HOST")
-DEBUG = True if os.getenv("DEBUG") == "True" else False
+# PORT = os.getenv("PORT")
+# HOST = os.getenv("HOST")
+# DEBUG = True if os.getenv("DEBUG") == "True" else False
+
+PORT = 8080
+HOST = "0.0.0.0"
+DEBUG = False
 
 app = Flask(__name__)
 
